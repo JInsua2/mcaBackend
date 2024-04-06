@@ -1,0 +1,44 @@
+spring:
+  logging:
+    level:
+      org:
+        springframework: DEBUG
+      org.flywaydb: DEBUG
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: mca
+    password: mca
+  flyway:
+    enabled: true
+    locations: classpath:db/ddl, classpath:db/dml
+  h2:
+    console:
+      enabled: true
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: false
+      properties:
+        spring.json.trusted.packages: java.util,java.lang,com.mca.*
+        isolation.level: read_committed
+      heartbeat-interval: 4000
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    listener:
+      ack-mode: manual-immediate
+      concurrency: 10
+      poll-timeout: 10000
+
+date: 2023-11-24T12:40:01.773Z
+topic: MCA
