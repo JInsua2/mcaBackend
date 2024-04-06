@@ -1,6 +1,9 @@
 package com.mca.controller;
 
-public class SagaController {
-  // TODO: Insert code in this controller
+import org.openapitools.api.GameSagasApi;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class SagaController implements GameSagasApi {
 
 }
