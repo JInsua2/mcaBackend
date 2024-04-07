@@ -1,5 +1,5 @@
 # Backend Access Test
-For some time now, MCA has maintained a website where we list and sell video games. These were organized alphabetically, but for a while, we have seen that it would be interesting for us to reorganize them by series. Therefore, we have met with the front-end team and have decided to carry out the following operation defined in the [contract](../src/main/resources/videoGames.yaml).
+For some time now, MCA has maintained a website where we list and sell video games. These were organized alphabetically, but for a while, we have seen that it would be interesting for us to reorganize them by series. Therefore, we have met with the front-end team and have decided to carry out the following operation defined in the [contract](../src/main/resources/api/videoGames.yaml).
 
 For this reason, the following [operation in the REST API](../src/main/resources/gameSagaApi.yaml) was created, in which you can see the IDs of the video games from a series.
 

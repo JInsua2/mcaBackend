@@ -6,12 +6,12 @@ servers:
   - url: 'http://localhost:3000'
 tags:
   - name: GameSagas
-    description: The videogames endpoint
+    description: The videogames saga endpoint
 paths:
   '/game-saga/{sagaId}/related-sagas':
     parameters:
       - schema:
-          type: string
+          type: integer
         name: sagaId
         in: path
         required: true
@@ -27,13 +27,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RelatedGameSagas'
+                $ref: '#/components/schemas/VideoGameSagaResponse'
 components:
   schemas:
-    RelatedGameSagas:
+    VideoGameSagaResponse:
       type: array
-      description: 'List of related game saga IDs to a given one ordered by relevance'
-      minItems: 0
-      uniqueItems: true
       items:
-        type: string
+        type: object
+        properties:
+          videoGameId:
+            type: integer
+            format: int32
+            example: 1
+          price:
+            type: number
+            format: float
+            example: 99.99
+          title:
+            type: string
+            example: 'Wasteland Chronicles: Edge of Survival'
+          stock:
+            type: integer
+            format: int32
+            example: 1
+        required:
+          - videoGameId
+          - price
+          - title
+          - stock
+

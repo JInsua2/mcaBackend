@@ -4,7 +4,7 @@ import com.mca.domain.shared.ValueObject;
 
 public class VideoGameSaga extends ValueObject<Integer> {
 
-    protected VideoGameSaga(final int value) {
+    public VideoGameSaga(final int value) {
         super(value);
     }
 }
