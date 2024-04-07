@@ -5,14 +5,14 @@ public class VideoGamePrimitives {
     private final Integer id;
     private final double videoGamePrice;
     private final Integer videoGameSaga;
-    private final Integer videoGameStock;
+    private final Boolean videoGameStock;
     private final String videoGameTittle;
 
     public VideoGamePrimitives(
         Integer id,
         double videoGamePrice,
         Integer videoGameSaga,
-        Integer videoGameStock,
+        Boolean videoGameStock,
         String videoGameTittle) {
         this.id = id;
         this.videoGamePrice = videoGamePrice;
@@ -33,7 +33,7 @@ public class VideoGamePrimitives {
         return videoGameSaga;
     }
 
-    public Integer getVideoGameStock() {
+    public Boolean getVideoGameStock() {
         return videoGameStock;
     }
 

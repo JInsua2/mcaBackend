@@ -47,9 +47,8 @@ components:
             type: string
             example: 'Wasteland Chronicles: Edge of Survival'
           stock:
-            type: integer
-            format: int32
-            example: 1
+            type: boolean
+            example: true
         required:
           - videoGameId
           - price

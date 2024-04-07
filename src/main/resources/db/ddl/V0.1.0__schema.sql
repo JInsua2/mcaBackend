@@ -1,9 +1,22 @@
-create table VIDEOGAME
+CREATE TABLE SAGA
 (
-    ID    int          not null AUTO_INCREMENT,
-    TITLE varchar(100) not null,
+    ID   INT          NOT NULL AUTO_INCREMENT,
+    NAME VARCHAR(255) NOT NULL,
     PRIMARY KEY (ID)
 );
+
+
+create table VIDEOGAME
+(
+    ID    INT          NOT NULL AUTO_INCREMENT,
+    TITLE VARCHAR(100) NOT NULL,
+    SAGA_ID INT,
+    PRIMARY KEY (ID),
+    CONSTRAINT fk_SAGA_ID_VIDEOGAME
+        FOREIGN KEY (SAGA_ID)
+            REFERENCES SAGA (ID)
+);
+
 create table PROMOTION
 (
     ID           int not null AUTO_INCREMENT,

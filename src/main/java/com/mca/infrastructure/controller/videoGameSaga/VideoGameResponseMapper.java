@@ -16,11 +16,9 @@ public interface VideoGameResponseMapper {
     @Mapping(source = "videoGamePrice", target = "price")
     @Mapping(source = "videoGameStock", target = "stock")
     @Mapping(source = "videoGameTittle", target = "title")
-    VideoGameSagaResponseInner mapToVideoGameSagaResponse(VideoGamePrimitives videoGame);
+    VideoGameSagaResponseInner fromDomain(VideoGamePrimitives videoGame);
 
-    default List<VideoGameSagaResponseInner> fromDomain(List<VideoGamePrimitives> videoGames) {
-        return videoGames.stream().map(this::mapToVideoGameSagaResponse).collect(Collectors.toList());
-    }
+    List<VideoGameSagaResponseInner> fromDomain(List<VideoGamePrimitives> videoGames);
 
     @Named("bigDecimalToFloat")
     default Float bigDecimalToFloat(BigDecimal value) {

@@ -2,9 +2,9 @@ package com.mca.domain.vos;
 
 import com.mca.domain.shared.ValueObject;
 
-public class VideoGameStock extends ValueObject<Integer> {
+public class VideoGameStock extends ValueObject<Boolean> {
 
-    protected VideoGameStock(final int value) {
+    public VideoGameStock(final Boolean value) {
         super(value);
     }
 }

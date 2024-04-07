@@ -4,7 +4,7 @@ import com.mca.domain.shared.ValueObject;
 
 public class VideoGamePrice extends ValueObject<Float> {
 
-    protected VideoGamePrice(final float value) {
+    public VideoGamePrice(final float value) {
         super(value);
     }
 }

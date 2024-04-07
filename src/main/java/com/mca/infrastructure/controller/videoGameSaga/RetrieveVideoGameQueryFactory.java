@@ -1,8 +1,8 @@
 package com.mca.infrastructure.controller.videoGameSaga;
 
-import com.mca.domain.RetrieveVideoGameQuery;
+import com.mca.domain.RetrieveVideoGameSagaQuery;
 import com.mca.domain.vos.PriceDateTime;
-import com.mca.domain.vos.VideoGameSaga;
+import com.mca.domain.vos.VideoGameSagaId;
 import java.time.LocalDateTime;
 
 public class RetrieveVideoGameQueryFactory {
@@ -10,14 +10,14 @@ public class RetrieveVideoGameQueryFactory {
     private RetrieveVideoGameQueryFactory() {
     }
 
-    public static RetrieveVideoGameQuery create(
+    public static RetrieveVideoGameSagaQuery create(
         final Integer sagaId) {
 
-        VideoGameSaga videoGameSaga = new VideoGameSaga(sagaId);
+        VideoGameSagaId videoGameSagaId = new VideoGameSagaId(sagaId);
         LocalDateTime localDateTime = LocalDateTime.now();
         PriceDateTime priceStartDate = new PriceDateTime(localDateTime);
-
-        return new RetrieveVideoGameQuery(videoGameSaga, priceStartDate);
+//todo 2
+        return new RetrieveVideoGameSagaQuery(videoGameSagaId, priceStartDate);
     }
 
 }

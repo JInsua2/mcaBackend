@@ -1,23 +1,39 @@
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (1, 'Aether Chronicles: Rise of the Phoenix');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (2, 'Nebulas Descent: Awakening');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (3, 'Whispers of the Void: Echoes');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (4, 'Titans of the Ancients: Reawakened');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (5, 'Temporal Quest: Nexus of Destiny');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (6, 'Mist of the Forgotten: Haunting Shadows');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (7, 'Abyssal Depths: Leviathans Call');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (8, 'Warriors of Fate: Twilight Vanguard');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (9, 'Pandemic Zone: Survivors Escape');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (10, 'Explorers Saga: Hidden Realms');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (11, 'Relic Hunter: Curse of the Emerald Eye');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (12, 'Infernos Ascent: Rekindled Fury');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (13, 'Galactic Marines: Stellar Conflict');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (14, 'Destinys Edge: Chronicles of Fate');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (15, 'Cosmic Empires: Twilight of the Overlords');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (16, 'Nether Realms: Siege of Shadows');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (17, 'Mythic Realms: Ascension');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (18, 'Eternal Battlefront: Rise of the Phoenix');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (19, 'Arcane Realms Online: Siege of the Sorcerer');
-INSERT INTO VIDEOGAME (ID, TITLE) VALUES (20, 'Wasteland Chronicles: Edge of Survival');
+INSERT INTO SAGA (ID, NAME) VALUES (1, 'Saga 1');
+INSERT INTO SAGA (ID, NAME) VALUES (2, 'Saga 2');
+INSERT INTO SAGA (ID, NAME) VALUES (3, 'Saga 3');
+INSERT INTO SAGA (ID, NAME) VALUES (4, 'Saga 4');
+INSERT INTO SAGA (ID, NAME) VALUES (5, 'Saga 5');
+INSERT INTO SAGA (ID, NAME) VALUES (26, 'Saga 26');
+INSERT INTO SAGA (ID, NAME) VALUES (37, 'Saga 37');
+INSERT INTO SAGA (ID, NAME) VALUES (18, 'Saga 18');
+INSERT INTO SAGA (ID, NAME) VALUES (12, 'Saga 12');
+INSERT INTO SAGA (ID, NAME) VALUES (9, 'Saga 9');
+
+
+INSERT INTO VIDEOGAME (ID, TITLE, SAGA_ID) VALUES
+(1, 'Aether Chronicles: Rise of the Phoenix', NULL),
+(2, 'Nebulas Descent: Awakening', 1),
+(3, 'Whispers of the Void: Echoes', 1),
+(4, 'Titans of the Ancients: Reawakened', 1),
+(5, 'Temporal Quest: Nexus of Destiny', 4),
+(6, 'Mist of the Forgotten: Haunting Shadows', 5),
+(7, 'Abyssal Depths: Leviathans Call', 2),
+(8, 'Warriors of Fate: Twilight Vanguard', 2),
+(9, 'Pandemic Zone: Survivors Escape', 3),
+(10, 'Explorers Saga: Hidden Realms', NULL),
+(11, 'Relic Hunter: Curse of the Emerald Eye', 9),
+(12, 'Infernos Ascent: Rekindled Fury', NULL),
+(13, 'Galactic Marines: Stellar Conflict', NULL),
+(14, 'Destinys Edge: Chronicles of Fate', NULL),
+(15, 'Cosmic Empires: Twilight of the Overlords', NULL),
+(16, 'Nether Realms: Siege of Shadows', NULL),
+(17, 'Mythic Realms: Ascension', NULL),
+(18, 'Eternal Battlefront: Rise of the Phoenix', NULL),
+(19, 'Arcane Realms Online: Siege of the Sorcerer', 12),
+(20, 'Wasteland Chronicles: Edge of Survival', 12);
+
+
+
 
 INSERT INTO PROMOTION ( ID ,VALID_FROM ,PRICE,VIDEOGAME_ID ) VALUES (1,'2023-07-06T20:12:14.140Z','9.99' ,1 );
 INSERT INTO PROMOTION ( ID ,VALID_FROM ,PRICE,VIDEOGAME_ID ) VALUES (2,'2023-04-05T20:47:45.356Z','19.99',2 );

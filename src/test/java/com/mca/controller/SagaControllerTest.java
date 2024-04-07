@@ -22,10 +22,18 @@ class SagaControllerTest {
 	private WebApplicationContext webApplicationContext;
 	private MockMvc mockMvc;
 	private static String URL = "/game/{gameId}/saga";
-	
+	private static String URLSAGA = "/game-saga/{sagaId}/related-sagas";
+
+
 	@BeforeEach
 	public void setup() throws Exception {
 	    this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
+	}
+
+	@Test
+	void testSaga1() throws Exception {
+		mockMvc.perform(get(URLSAGA, 1)).andExpect(status().is(HttpStatus.OK.value()));
+
 	}
 
 	@Test
