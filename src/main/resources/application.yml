@@ -2,7 +2,8 @@ spring:
   logging:
     level:
       org:
-        springframework: DEBUG
+        springframework:
+          cache: DEBUG
       org.flywaydb: DEBUG
   jpa:
     hibernate:

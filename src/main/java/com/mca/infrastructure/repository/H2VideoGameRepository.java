@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -40,7 +41,7 @@ public class H2VideoGameRepository implements VideoGameRepository {
         this.h2VideoGameDtoMapper = h2VideoGameDtoMapper;
     }
 
-
+    @Cacheable("videoGames")
     public List<VideoGame> findActiveVideoGameSaga(VideoGameSagaId videoGameSagaId, PriceDateTime time) {
         SagaDto sagaDto = jpaSagaDao.findById(videoGameSagaId.getValue())
             .orElseThrow(() -> new EntityNotFoundException("Saga not found"));
