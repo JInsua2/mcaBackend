@@ -1,5 +1,7 @@
 package com.mca.domain.shared;
 
+import java.util.Objects;
+
 public abstract class AggregateRoot<T extends ValueObject<?>> {
 
     private final T id;
