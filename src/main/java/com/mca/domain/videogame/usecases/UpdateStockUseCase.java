@@ -1,8 +1,8 @@
 package com.mca.domain.videogame.usecases;
 
-import com.mca.infrastructure.videogame.integrationevents.UpdateStockEvent;
+import com.mca.domain.videogame.commands.UpdateStockCommand;
 
 public interface UpdateStockUseCase {
 
-    void handle(UpdateStockEvent videoGameEvent);
+    void handle(UpdateStockCommand updateStockCommand);
 }

@@ -1,24 +1,19 @@
 package com.mca.infrastructure.videogame.repositories;
 
 import com.mca.domain.videogame.VideoGame;
-import com.mca.domain.videogame.VideoGameCriteria;
 import com.mca.domain.videogame.VideoGamePrimitives;
 import com.mca.domain.videogame.VideoGameRepository;
 import com.mca.domain.videogame.stock.StockPrimitives;
 import com.mca.domain.videogame.stock.vos.StockAvailability;
 import com.mca.domain.videogame.stock.vos.StockId;
 import com.mca.domain.videogame.stock.vos.StockTime;
-import com.mca.domain.videogame.vos.PriceDateTime;
 import com.mca.domain.videogame.vos.VideoGameId;
 import com.mca.domain.videogame.vos.VideoGameSagaId;
 import com.mca.infrastructure.videogame.repositories.dtos.PromotionDto;
-import com.mca.infrastructure.videogame.repositories.dtos.StockDto;
 import com.mca.infrastructure.videogame.repositories.dtos.VideoGameDto;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -45,13 +40,8 @@ public class H2VideoGameRepository implements VideoGameRepository {
     }
 
     @Override
-    public List<VideoGame> findActiveVideoGameSaga(VideoGameSagaId videoGameSagaId, PriceDateTime time) {
-        return null;
-    }
-
-    @Override
-    public VideoGame findActiveVideoGame(VideoGameId videoGameId, PriceDateTime time) {
-        return null;
+    public void updateStock(StockId stockId, StockAvailability stockAvailability, StockTime stockTime) {
+        this.jpaVideoGameDao.updateStock(stockId.getValue(),stockAvailability.getValue(), Timestamp.valueOf(stockTime.getValue()));
     }
 
     @Override
@@ -88,7 +78,6 @@ public class H2VideoGameRepository implements VideoGameRepository {
                 stockDto.getAvailability(),
                 stockDto.getLastUpdated().toLocalDateTime()))
             .toList();
-        //TODO implement logic to get the most recent stock and order promotion first one is the lastest
         return new VideoGamePrimitives(h2VideoGameDto.getId(), promotionCollection.get(0), sagaId, h2VideoGameDto.getTitle(), stocksPrimitives.get(0));
 
     }

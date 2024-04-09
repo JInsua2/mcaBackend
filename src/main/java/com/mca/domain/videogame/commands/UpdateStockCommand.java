@@ -1,8 +1,14 @@
 package com.mca.domain.videogame.commands;
 
-import com.mca.domain.videogame.vos.SotckLastUpdated;
-import com.mca.domain.videogame.vos.VideoGameStock;
+import com.mca.domain.videogame.stock.vos.StockAvailability;
+import com.mca.domain.videogame.stock.vos.StockId;
+import com.mca.domain.videogame.stock.vos.StockTime;
+import java.sql.Timestamp;
 
-public class UpdateStockCommand {
+public record UpdateStockCommand(
+    StockId stockId,
+    StockAvailability availability,
+    StockTime lasUpdated
+) {
 
 }
