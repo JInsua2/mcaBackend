@@ -32,6 +32,28 @@ An endpoint has also been made public so that games related to a saga can be obt
 
 See on [swagger ui](http://localhost:8080/swagger-ui/index.html)
 
+## Testing events with docker
+
+If you wish to test the consumption of events from a Kafka topic, it's necessary to ensure that both the Kafka server and the Docker container are configured on the same network. This setup is required to establish a connection successfully.
+
+Create image
+
+```bash
+docker build -t mca-backend .
+```
+
+Get the kafka-server network
+
+```bash
+docker network ls
+```
+
+Run docker image
+
+```bash
+docker run -p 8080:8080 --network=<name_of_your_network> mca-backend
+```
+
 ## Monitoring
 
 - [/h2-console](http://localhost:8080/h2-console)
