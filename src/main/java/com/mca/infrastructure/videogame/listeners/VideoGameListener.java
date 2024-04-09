@@ -15,7 +15,6 @@ public class VideoGameListener {
     @KafkaListener(topics = "${topic}")
     public void updateStock(final String event) {
         final var videoGameEvent = gson.fromJson(event, UpdateStockEvent.class);
-        System.out.println("Me estoy haciendo un cafe, ya funciona :)");
 
     }
 }

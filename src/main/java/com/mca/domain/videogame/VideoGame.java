@@ -11,7 +11,7 @@ import java.util.List;
 
 public class VideoGame extends AggregateRoot<VideoGameId> {
 
-    private final List<VideoGamePrice> videoGamePrice;
+    private final VideoGamePrice videoGamePrice;
     private final VideoGameSagaId videoGameSagaId;
     private final Stock videoGameStock;
     private final VideoGameTitle videoGameTitle;
@@ -38,7 +38,7 @@ public class VideoGame extends AggregateRoot<VideoGameId> {
     public VideoGamePrimitives toPrimitives() {
         return new VideoGamePrimitives(
             this.id.getValue(),
-            this.videoGamePrice.stream().map(ValueObject::getValue).toList(),
+            this.videoGamePrice.getValue(),
             this.videoGameSagaId.getValue(),
             this.videoGameTitle.getValue(),
             this.videoGameStock.toPrimitives());

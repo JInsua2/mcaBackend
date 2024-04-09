@@ -19,9 +19,7 @@ public class SearchVideoGameSagaUseCaseHandle implements SearchVideoGamesUseCase
 
     @Override
     public List<VideoGame> handle(SearchVideoGameSagaQuery searchVideoGameSagaQuery) {
-        videoGameRepository.findBy(null);
-        return videoGameRepository.findActiveVideoGameSaga(
-            searchVideoGameSagaQuery.videoGameSagaId(),
-            searchVideoGameSagaQuery.priceDateTime());
+
+        return videoGameRepository.findBySaga(searchVideoGameSagaQuery.videoGameSagaId());
     }
 }

@@ -5,14 +5,19 @@ import com.mca.domain.videogame.VideoGameCriteria;
 import com.mca.domain.videogame.VideoGamePrimitives;
 import com.mca.domain.videogame.VideoGameRepository;
 import com.mca.domain.videogame.stock.StockPrimitives;
+import com.mca.domain.videogame.stock.vos.StockAvailability;
+import com.mca.domain.videogame.stock.vos.StockId;
+import com.mca.domain.videogame.stock.vos.StockTime;
 import com.mca.domain.videogame.vos.PriceDateTime;
 import com.mca.domain.videogame.vos.VideoGameId;
 import com.mca.domain.videogame.vos.VideoGameSagaId;
 import com.mca.infrastructure.videogame.repositories.dtos.PromotionDto;
+import com.mca.infrastructure.videogame.repositories.dtos.StockDto;
 import com.mca.infrastructure.videogame.repositories.dtos.VideoGameDto;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Set;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
@@ -32,10 +37,10 @@ public class H2VideoGameRepository implements VideoGameRepository {
     }
 
     @Override
-    public List<VideoGame> findBy(VideoGameCriteria criteria) {
-        final var sagaId = criteria.getSagaId().getValue();
-        //return this.h2VideoGameDtoMapper.toDomain(this.jpaVideoGameDao.findBySaga_Id(sagaId));
-        throw new UnsupportedOperationException(METHOD_NOT_IMPLEMENTED_YET);
+    public List<VideoGame> findBySaga(VideoGameSagaId videoGameSagaId) {
+        final List<VideoGameDto>  videoGameDtos = this.jpaVideoGameDao.findBySaga_Id(videoGameSagaId.getValue());
+        List<VideoGamePrimitives> videoGamePrimitiveCollection = videoGameDtos.stream().map(this::buildVideoGamePrimitives).toList();
+        return this.h2VideoGameDtoMapper.toDomain(videoGamePrimitiveCollection);
 
     }
 

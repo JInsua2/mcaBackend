@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import java.util.Set;
 import lombok.Getter;
@@ -27,9 +28,11 @@ public class VideoGameDto {
     @JoinColumn(name = "SAGA_ID")
     private SagaDto saga;
 
+    @OrderBy("validFrom DESC")
     @OneToMany(mappedBy = "videoGame", fetch = FetchType.EAGER)
     private Set<PromotionDto> promotions;
 
+    @OrderBy("lastUpdated DESC")
     @OneToMany(mappedBy = "videoGame", fetch = FetchType.EAGER)
     private Set<StockDto> stocks;
 }

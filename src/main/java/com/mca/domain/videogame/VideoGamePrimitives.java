@@ -6,14 +6,14 @@ import java.util.List;
 public class VideoGamePrimitives {
 
     private final Long id;
-    private final List<Double> videoGamePrice;
+    private final Double videoGamePrice;
     private final Long videoGameSaga;
     private final StockPrimitives videoGameStock;
     private final String videoGameTitle;
 
     public VideoGamePrimitives(
         Long id,
-        List<Double> videoGamePrice,
+        Double videoGamePrice,
         Long videoGameSaga,
         String videoGameTitle,
         StockPrimitives videoGameStock) {
@@ -28,7 +28,7 @@ public class VideoGamePrimitives {
         return id;
     }
 
-    public List<Double> getVideoGamePrice() {
+    public Double getVideoGamePrice() {
         return videoGamePrice;
     }
 

@@ -36,13 +36,12 @@ components:
         type: object
         properties:
           videoGameId:
-            type: integer
-            format: int32
+            type: long
             example: 1
           price:
             type: number
-            format: float
-            example: 99.99
+            format: double
+            example: 99.9
           title:
             type: string
             example: 'Wasteland Chronicles: Edge of Survival'

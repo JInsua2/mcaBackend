@@ -4,7 +4,6 @@ import com.mca.domain.videogame.usecases.SearchVideoGamesUseCase;
 import com.mca.domain.videogame.VideoGame;
 import com.mca.domain.videogame.VideoGamePrimitives;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.openapitools.api.GameSagasApi;
 import org.openapitools.model.VideoGameSagaResponseInner;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class VideoGameController implements GameSagasApi {
 
     private final SearchVideoGamesUseCase searchVideoGamesUseCase;
-    //private final VideoGameDtoMapper videoGameDtoMapper;
+    private final VideoGameDtoMapper videoGameDtoMapper;
 
-    public VideoGameController(final SearchVideoGamesUseCase searchVideoGames) {
+    public VideoGameController(final SearchVideoGamesUseCase searchVideoGames, VideoGameDtoMapper videoGameDtoMapper) {
         this.searchVideoGamesUseCase = searchVideoGames;
+        this.videoGameDtoMapper = videoGameDtoMapper;
     }
 
 
@@ -29,8 +29,7 @@ public class VideoGameController implements GameSagasApi {
         List<VideoGamePrimitives> videoGamePrimitivesCollection = videoGames.stream()
             .map(VideoGame::toPrimitives)
             .toList();
-        //return ResponseEntity.ok(this.videoGameDtoMapper.fromDomain(videoGamePrimitivesCollection));
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(this.videoGameDtoMapper.fromDomain(videoGamePrimitivesCollection));
 
     }
 
