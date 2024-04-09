@@ -1,5 +1,6 @@
 package com.mca.infrastructure.videogame.repositories;
 
+import com.mca.domain.exceptions.NotFoundException;
 import com.mca.domain.videogame.VideoGame;
 import com.mca.domain.videogame.VideoGamePrimitives;
 import com.mca.domain.videogame.VideoGameRepository;
@@ -14,12 +15,14 @@ import com.mca.infrastructure.videogame.repositories.dtos.VideoGameDto;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class H2VideoGameRepository implements VideoGameRepository {
 
     private static final String METHOD_NOT_IMPLEMENTED_YET = "Method not implemented yet";
+    private static final String SAGA_NOT_FOUND_MESSAGE = "Saga not found" ;
     private final JpaVideoGameDao jpaVideoGameDao;
     private final H2VideoGameDtoMapper h2VideoGameDtoMapper;
 
@@ -31,13 +34,20 @@ public class H2VideoGameRepository implements VideoGameRepository {
         this.h2VideoGameDtoMapper = h2VideoGameDtoMapper;
     }
 
+
     @Override
     public List<VideoGame> findBySaga(VideoGameSagaId videoGameSagaId) {
-        final List<VideoGameDto>  videoGameDtos = this.jpaVideoGameDao.findBySaga_Id(videoGameSagaId.getValue());
-        List<VideoGamePrimitives> videoGamePrimitiveCollection = videoGameDtos.stream().map(this::buildVideoGamePrimitives).toList();
-        return this.h2VideoGameDtoMapper.toDomain(videoGamePrimitiveCollection);
 
+        List<VideoGamePrimitives> videoGamePrimitives = Optional.of(this.jpaVideoGameDao.findBySaga_Id(videoGameSagaId.getValue()))
+            .filter(list -> !list.isEmpty())
+            .orElseThrow(() -> new NotFoundException(SAGA_NOT_FOUND_MESSAGE))
+            .stream()
+            .map(this::buildVideoGamePrimitives)
+            .toList();
+
+        return this.h2VideoGameDtoMapper.toDomain(videoGamePrimitives);
     }
+
 
     @Override
     public void updateStock(StockId stockId, StockAvailability stockAvailability, StockTime stockTime) {

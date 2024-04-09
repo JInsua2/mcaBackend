@@ -1,12 +1,16 @@
 package com.mca.infrastructure.videogame.controllers;
 
+import com.mca.domain.exceptions.NotFoundException;
 import com.mca.domain.videogame.usecases.SearchVideoGamesUseCase;
 import com.mca.domain.videogame.VideoGame;
 import com.mca.domain.videogame.VideoGamePrimitives;
 import java.util.List;
 import org.openapitools.api.GameSagasApi;
+import org.openapitools.model.ErrorResponse;
 import org.openapitools.model.VideoGameSagaResponseInner;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -31,6 +35,11 @@ public class VideoGameController implements GameSagasApi {
             .toList();
         return ResponseEntity.ok(this.videoGameDtoMapper.fromDomain(videoGamePrimitivesCollection));
 
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(NotFoundException ex) {
+        return new ResponseEntity<>(new ErrorResponse().message(ex.getMessage()).status(HttpStatus.NOT_FOUND.value()), HttpStatus.NOT_FOUND);
     }
 
 }
