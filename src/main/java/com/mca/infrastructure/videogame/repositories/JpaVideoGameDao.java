@@ -7,8 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface JpaVideoGameDao extends JpaRepository<VideoGameDto, Integer> {
-
-
-
-    List<VideoGameDto> findBySaga_Id(Long id);
+    List<VideoGameDto> findBySaga_Id(final Long id);
 }

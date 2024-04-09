@@ -4,7 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Set;
 import lombok.Getter;
 
 @Entity
@@ -18,5 +20,6 @@ public class SagaDto {
 
     private String name;
 
-
+    @OneToMany(mappedBy = "saga")
+    private Set<VideoGameDto> videogames;
 }

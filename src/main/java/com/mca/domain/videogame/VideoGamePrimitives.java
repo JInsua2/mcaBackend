@@ -24,7 +24,7 @@ public class VideoGamePrimitives {
         this.videoGameStock = videoGameStock;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -32,7 +32,7 @@ public class VideoGamePrimitives {
         return videoGamePrice;
     }
 
-    public Integer getVideoGameSaga() {
+    public Long getVideoGameSaga() {
         return videoGameSaga;
     }
 

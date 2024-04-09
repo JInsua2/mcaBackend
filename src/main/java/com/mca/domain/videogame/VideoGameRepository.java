@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface VideoGameRepository extends Repository<VideoGame, VideoGameId> {
 
+    List<VideoGame> findBySaga(final VideoGameSagaId videoGameSagaId);
+
     List<VideoGame> findActiveVideoGameSaga(
         final VideoGameSagaId videoGameSagaId,
         final PriceDateTime time);

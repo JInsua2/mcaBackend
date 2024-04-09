@@ -24,7 +24,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class H2VideoGameRepository implements VideoGameRepository {
 
-    private final JpaSagaDao jpaSagaDao;
+    private static final String METHOD_NOT_IMPLEMENTED_YET = "Method not implemented yet";
     private final JpaVideoGameDao jpaVideoGameDao;
     private final H2VideoGameDtoMapper h2VideoGameDtoMapper;
 
@@ -56,26 +56,40 @@ public class H2VideoGameRepository implements VideoGameRepository {
 
     @Override
     public VideoGame findById(VideoGameId id) {
-        return null;
+        throw new UnsupportedOperationException(METHOD_NOT_IMPLEMENTED_YET);
     }
 
     @Override
     public List<VideoGame> findAll() {
-        return null;
+        throw new UnsupportedOperationException(METHOD_NOT_IMPLEMENTED_YET);
     }
 
     @Override
     public void create(VideoGame aggregateRoot) {
-
+        throw new UnsupportedOperationException(METHOD_NOT_IMPLEMENTED_YET);
     }
 
     @Override
     public void update(VideoGame aggregateRoot) {
-
+        throw new UnsupportedOperationException(METHOD_NOT_IMPLEMENTED_YET);
     }
 
     @Override
     public void delete(VideoGame aggregateRoot) {
+        throw new UnsupportedOperationException(METHOD_NOT_IMPLEMENTED_YET);
+    }
+
+    private VideoGamePrimitives buildVideoGamePrimitives(final VideoGameDto h2VideoGameDto) {
+        final var sagaId = h2VideoGameDto.getSaga().getId();
+        final var promotionCollection = h2VideoGameDto.getPromotions().stream().map(PromotionDto::getPrice).map(BigDecimal::doubleValue).toList();
+        final var stocksPrimitives = h2VideoGameDto.getStocks().stream()
+            .map(stockDto -> new StockPrimitives(
+                stockDto.getId(),
+                stockDto.getAvailability(),
+                stockDto.getLastUpdated().toLocalDateTime()))
+            .toList();
+        //TODO implement logic to get the most recent stock and order promotion first one is the lastest
+        return new VideoGamePrimitives(h2VideoGameDto.getId(), promotionCollection.get(0), sagaId, h2VideoGameDto.getTitle(), stocksPrimitives.get(0));
 
     }
 }

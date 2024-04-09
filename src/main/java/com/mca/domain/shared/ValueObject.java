@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public abstract class ValueObject<T> {
 
-    private final T value;
     private static final String NULL_VALUE_OBJECT_MESSAGE = "A value object can not be null";
+    protected final T value;
 
     protected ValueObject(final T value) {
         this.value = value;

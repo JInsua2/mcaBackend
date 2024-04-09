@@ -3,9 +3,9 @@ package com.mca.domain.videogame.vos;
 import com.mca.domain.shared.ValueObject;
 import java.util.Objects;
 
-public class VideoGameSagaId extends ValueObject<Integer> {
+public class VideoGameSagaId extends ValueObject<Long> {
 
-    public VideoGameSagaId(final int value) {
+    public VideoGameSagaId(final Long value) {
         super(value);
     }
 

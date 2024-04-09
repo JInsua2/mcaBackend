@@ -23,7 +23,7 @@ public class PromotionDto {
     private Long id;
 
     private Timestamp validFrom;
-    private BigDecimal price ;
+    private BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name = "VIDEOGAME_ID", nullable = false)
